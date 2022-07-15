@@ -1,4 +1,5 @@
 import { prisma } from "../database/prismaClient";
+import AppError from "../errors/appError";
 
 
 
@@ -25,7 +26,7 @@ class CreateBookService {
       });
   
       if (bookAlreadyExists) {
-        throw new Error("Book already exists!");
+        throw new AppError("Book already exists!", 400);
       }
   
       const newBook = await prisma.book.create({

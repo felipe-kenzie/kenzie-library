@@ -6,12 +6,12 @@ import { listBookscontroller } from "../controllers/listBooks.controller";
 
 const booksRoutes = Router();
 
-booksRoutes.post("/", (request, response) =>
-  createBookcontroller.handle(request, response)
+booksRoutes.post("/", (req, res, next) =>
+  createBookcontroller.handle(req, res, next)
 );
 
-booksRoutes.get("/", (request, response) =>
-  listBookscontroller.handle(request, response)
+booksRoutes.get("/", (req, res) =>
+  listBookscontroller.handle(req, res)
 );
 
 export { booksRoutes };
